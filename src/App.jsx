@@ -17,6 +17,9 @@ import fw from './assets/fw.jpeg';
 import fw2 from './assets/fw2.jpeg';
 import lela from './assets/lela.jpeg';
 import lela1 from './assets/lela1.jpeg';
+import vtol from './assets/vtol.jpeg';
+import vtol1 from './assets/vtol1.jpeg';
+import logoUSK from './assets/Unsyiah.png';
 
 // Definisi Palet Warna Solid & Diskrit (Berdasarkan Gambar):
 const palette = {
@@ -243,6 +246,14 @@ export default function SeulawahTeamProfile() {
       },
       {
         id: 3,
+        title: 'VERTICAL TAKE-OFF AND LANDING',
+        category: 'VTOL',
+        description: 'Divisi pengembangan wahana dengan kemampuan lepas landas dan mendarat vertikal secara otonom. Dirancang untuk menjalankan misi penerbangan jarak jauh yang mampu beroperasi di area outdoor maupun indoor dengan sistem navigasi presisi tinggi, transisi terbang yang stabil, serta kemampuan autonomous mission planning',
+        images: [krti, vtol, vtol1],
+        hexColor: palette.rose
+      },
+      {
+        id: 4,
         title: 'LONG ENDURANCE LOW ALTITUDE',
         category: 'LELA',
         description: 'Divisi yang menguji ketahanan terbang jarak jauh dengan tingkat efisiensi daya maksimal. Pesawat ini didesain khusus untuk misi pemantauan udara berkelanjutan, menjaga komunikasi telemetri, serta mendeteksi dan memvalidasi titik api (hotspot) hutan.',
@@ -368,30 +379,37 @@ export default function SeulawahTeamProfile() {
       </nav>
 
       {/* Hero Section */}
-      <section id="hq" className="relative min-h-screen flex items-center justify-center px-6 pt-22 md:pt-4 pb-16 z-10">
+      <section id="hq" className="relative min-h-screen flex items-center justify-center px-6 pt-16 md:pt-4 pb-16 z-10">
         <FloatingGrid />
         <div className="max-w-8xl mx-auto grid md:grid-cols-2 gap-10 items-center mt-0 md:mt-0 relative">
 
           <div className="space-y-2 scroll-reveal opacity-0" data-animation="animate-slideInLeft">
-            <div className="inline-flex items-center gap-2 px-2 py-2 bg-white border border-slate-200 text-slate-800 rounded-md text-xs font-mono font-bold tracking-widest uppercase">
-              <span className="w-3 h-3 rounded-full border border-slate-900" style={{ backgroundColor: palette.purple }}></span>
+            <div className="inline-flex items-center gap-2 px-2 py-1.5 md:py-2 bg-white border border-slate-200 text-slate-800 rounded-md text-[10px] md:text-xs font-mono font-bold tracking-widest uppercase">
+              {/* Logo USK menggantikan span lingkaran */}
+              <img
+                src={logoUSK}
+                alt="Logo USK"
+                className="w-4 h-4 md:w-5 md:h-5 object-contain"
+              />
               Universitas Syiah Kuala
             </div>
             {/* Judul Teks Solid */}
-            <h1 className="text-3xl md:text-6xl lg:text-5xl font-bold leading-tight display-font text-slate-900">
+            <h1 className="text-2xl md:text-6xl lg:text-5xl font-bold leading-tight display-font text-slate-900">
               <span className="border-b-8 border-slate-900 pb-0 inline-block mb-1">
                 SEULAWAH TEAM
               </span>
               <br />
               <span className="highlight-solid">UAVs RESEARCH TEAM</span>
             </h1>
-            <p className="text-sm text-slate-800 leading-relaxed font-medium md:text-lg max-w-lg">
+            <p className="text-xs text-slate-800 leading-relaxed font-medium md:text-lg max-w-lg">
               Elevating Aerospace Frontiers: Pioneering UAV Technology at Universitas Syiah Kuala to Engineer Tomorrow's Solutions.
             </p>
             <div className="flex flex-wrap gap-1 font-mono font-bold text-xs text-slate-700 pt-1">
-              <span className="px-1 py-1 bg-white border border-slate-200 rounded">[RACING PLANE]</span>
-              <span className="px-1 py-1 bg-white border border-slate-200 rounded">[FIXED WING]</span>
-              <span className="px-1 py-1 bg-white border border-slate-200 rounded">[LONG ENDURANCE LOW ALTITUDE]</span>
+              <span className="px-1 py-1 bg-white border border-slate-200 rounded">[RP]</span>
+              <span className="px-1 py-1 bg-white border border-slate-200 rounded">[FW]</span>
+              <span className="px-1 py-1 bg-white border border-slate-200 rounded">[VTOL]</span>
+              <span className="px-1 py-1 bg-white border border-slate-200 rounded">[LELA]</span>
+              
             </div>
           </div>
 
@@ -476,7 +494,7 @@ export default function SeulawahTeamProfile() {
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16 scroll-reveal opacity-0" data-animation="animate-slideInUp">
             <h2 className="text-2xl md:text-5xl font-bold mb-4 display-font tracking-wide text-slate-900">TENTANG KAMI</h2>
-            <p className="text-slate-700 max-w-4xl mx-auto leading-relaxed text-lg">
+            <p className="text-slate-700 max-w-4xl mx-auto leading-relaxed text-l md:text-lg">
               Berdiri sejak 2016 di Universitas Syiah Kuala, Tim Seulawah adalah pusat riset dan pengembangan Pesawat Tanpa Awak (UAV). Fokus kami mencakup rancang bangun sistem Racing Plane (RP), Fixed-Wing (FW), dan Long Endurance Low Altitude (LELA).
               Sebagai ajang pembuktian inovasi dan keandalan teknologi yang kami rancang, Tim Seulawah rutin berpartisipasi aktif dalam Kontes Robot Terbang Indonesia (KRTI). Melalui kolaborasi lintas disiplin ilmu, kami terus mengembangkan solusi navigasi otonom, pemetaan udara presisi, dan sistem pengawasan pintar untuk menjawab tantangan operasional di sektor sipil maupun pertahanan strategis.
             </p>
@@ -526,7 +544,7 @@ export default function SeulawahTeamProfile() {
               <span className="text-2xl text-slate-900 font-bold">✈️</span>
             </div>
             <h2 className="text-3xl md:text-5xl font-bold mb-4 display-font tracking-wide text-slate-900">DIVISI KRTI</h2>
-            <p className="text-slate-700 max-w-2xl mx-auto text-lg leading-relaxed">
+            <p className="text-slate-700 max-w-2xl mx-auto text-l md:text-lg leading-relaxed">
               Kontes Robot Terbang Indonesia (KRTI) adalah panggung utama kami dalam menguji keandalan riset dan inovasi teknologi UAV. Sebagai delegasi Universitas Syiah Kuala, Tim Seulawah berfokus pada tiga divisi kompetisi, yang masing-masing menuntut spesifikasi teknis, misi otonom, dan tantangan aerodinamika yang spesifik.
             </p>
           </div>
@@ -550,7 +568,7 @@ export default function SeulawahTeamProfile() {
               <FiAward className="text-2xl text-slate-900" />
             </div>
             <h2 className="text-3xl md:text-5xl font-bold mb-4 display-font tracking-wide text-slate-900">PENGALAMAN</h2>
-            <p className="text-slate-700 max-w-2xl mx-auto text-lg leading-relaxed">
+            <p className="text-slate-700 max-w-2xl mx-auto text-l md:text-lg leading-relaxed">
               Perjalanan, pencapaian tim dalam kompetisi nasional, serta integrasi riset akademik ke dalam aplikasi industri yang nyata.
             </p>
           </div>

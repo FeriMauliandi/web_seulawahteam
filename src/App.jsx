@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { FiMail, FiInstagram, FiLinkedin, FiCpu, FiTarget, FiAward, FiChevronLeft, FiChevronRight, FiX, FiMonitor } from 'react-icons/fi';
+import { FiMail, FiInstagram, FiLinkedin, FiCpu, FiTarget, FiAward, FiChevronLeft, FiChevronRight, FiX, FiMonitor, FiMenu } from 'react-icons/fi';
 import { FaTiktok } from 'react-icons/fa';
 import fotoFeri from './assets/feri.jpg';
 
@@ -197,6 +197,7 @@ const ProjectCard = ({ project, idx }) => {
 
 export default function SeulawahTeamProfile() {
   const [activeTab, setActiveTab] = useState('fleet');
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -351,7 +352,7 @@ export default function SeulawahTeamProfile() {
           z-index: -1;
         }
       `}</style>
-
+  
       {/* Navigation */}
       <nav className="fixed top-0 left-0 right-0 z-50 bg-white border-b border-slate-200">
         <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
@@ -363,11 +364,12 @@ export default function SeulawahTeamProfile() {
               className="h-10 w-auto object-contain"
             />
 
-            <div className="text-l md:text-2xl font-bold display-font tracking-wider text-slate-900">
+            <div className="text-sm md:text-2xl font-bold display-font tracking-wider text-slate-900">
               SEULAWAH TEAM
             </div>
           </div>
 
+          {/* Desktop Menu - Disembunyikan di Mobile */}
           <div className="hidden md:flex items-center gap-8 text-sm font-mono tracking-widest font-bold text-slate-600">
             <a href="#hq" className="hover:text-slate-900 transition-colors">BERANDA</a>
             <a href="#mission" className="hover:text-slate-900 transition-colors">TENTANG KAMI</a>
@@ -375,7 +377,56 @@ export default function SeulawahTeamProfile() {
             <a href="#history" className="hover:text-slate-900 transition-colors">PENGALAMAN</a>
             <a href="#comms" className="hover:text-slate-900 transition-colors">KONTAK</a>
           </div>
+
+          {/* Mobile Menu Button - Hanya Muncul di Mobile */}
+          <button
+            className="md:hidden flex items-center justify-center p-2 text-slate-900 hover:bg-slate-100 rounded-md transition-colors"
+            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+          >
+            {isMobileMenuOpen ? <FiX size={24} /> : <FiMenu size={24} />}
+          </button>
         </div>
+
+        {/* Mobile Menu Dropdown - Muncul ketika tombol ditekan */}
+        {isMobileMenuOpen && (
+          <div className="md:hidden absolute top-full left-0 w-full bg-white border-b border-slate-200 shadow-xl flex flex-col font-mono tracking-widest font-bold text-slate-600 text-sm">
+            <a
+              href="#hq"
+              onClick={() => setIsMobileMenuOpen(false)}
+              className="px-6 py-4 border-t border-slate-100 hover:bg-slate-50 hover:text-slate-900 transition-colors"
+            >
+              BERANDA
+            </a>
+            <a
+              href="#mission"
+              onClick={() => setIsMobileMenuOpen(false)}
+              className="px-6 py-4 border-t border-slate-100 hover:bg-slate-50 hover:text-slate-900 transition-colors"
+            >
+              TENTANG KAMI
+            </a>
+            <a
+              href="#fleet"
+              onClick={() => setIsMobileMenuOpen(false)}
+              className="px-6 py-4 border-t border-slate-100 hover:bg-slate-50 hover:text-slate-900 transition-colors"
+            >
+              DIVISI KRTI
+            </a>
+            <a
+              href="#history"
+              onClick={() => setIsMobileMenuOpen(false)}
+              className="px-6 py-4 border-t border-slate-100 hover:bg-slate-50 hover:text-slate-900 transition-colors"
+            >
+              PENGALAMAN
+            </a>
+            <a
+              href="#comms"
+              onClick={() => setIsMobileMenuOpen(false)}
+              className="px-6 py-4 border-t border-slate-100 hover:bg-slate-50 hover:text-slate-900 transition-colors"
+            >
+              KONTAK
+            </a>
+          </div>
+        )}
       </nav>
 
       {/* Hero Section */}
@@ -395,21 +446,23 @@ export default function SeulawahTeamProfile() {
             </div>
             {/* Judul Teks Solid */}
             <h1 className="text-2xl md:text-6xl lg:text-5xl font-bold leading-tight display-font text-slate-900">
-              <span className="border-b-8 border-slate-900 pb-0 inline-block mb-1">
+              <span className="border-b-4 md:border-b-8 border-slate-900 pb-0 inline-block mb-1">
                 SEULAWAH TEAM
               </span>
               <br />
               <span className="highlight-solid">UAVs RESEARCH TEAM</span>
             </h1>
             <p className="text-xs text-slate-800 leading-relaxed font-medium md:text-lg max-w-lg">
-              Elevating Aerospace Frontiers: Pioneering UAV Technology at Universitas Syiah Kuala to Engineer Tomorrow's Solutions.
+              Elevating Aerial Horizons: Pioneering UAV Technology at Universitas Syiah Kuala to Engineer Tomorrow's Solutions.
             </p>
-            <div className="flex flex-wrap gap-1 font-mono font-bold text-xs text-slate-700 pt-1">
-              <span className="px-1 py-1 bg-white border border-slate-200 rounded">[RP]</span>
-              <span className="px-1 py-1 bg-white border border-slate-200 rounded">[FW]</span>
-              <span className="px-1 py-1 bg-white border border-slate-200 rounded">[VTOL]</span>
-              <span className="px-1 py-1 bg-white border border-slate-200 rounded">[LELA]</span>
-              
+            <div className="pt-0">
+              <a
+                href="#comms"
+                className="inline-flex items-center gap-1 px-2 py-2 border-2 border-slate-900 rounded-md transition-all text-slate-900 font-mono font-bold text-xs md:text-sm hover:-translate-y-1 shadow-sm"
+                style={{ backgroundColor: palette.green}}
+              >
+                <FiTarget size={18} /> SUPPORT OUR MISSION!!
+              </a>
             </div>
           </div>
 
@@ -454,32 +507,34 @@ export default function SeulawahTeamProfile() {
                 </div>
 
                 {/* Overlay HUD - Solid & Clean */}
-                <div className="absolute bottom-4 left-4 bg-white px-2 py-1 rounded text-slate-800 font-mono font-bold text-[9px] sm:text-[10px] tracking-widest border border-slate-200 flex items-center gap-2 shadow-sm z-30">
+                <div className="absolute bottom-24 md:bottom-42 left-2 bg-white px-2 py-1 rounded text-slate-800 font-mono font-bold text-[9px] sm:text-[10px] tracking-widest border border-slate-200 flex items-center gap-2 shadow-sm z-30">
                   <span className="w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full border border-slate-800" style={{ backgroundColor: palette.green }}></span>
-                  Terbuka untuk Sponsorship & Kolaborasi
+                  Sponsorship & Kolaborasi
                 </div>
-                <div className="absolute top-4 right-4 bg-white px-2 py-1 rounded text-slate-800 font-mono font-bold text-[9px] sm:text-[10px] tracking-widest text-right border border-slate-200 shadow-sm z-30">
-                  Contact Us
+                <div className="absolute top-2 right-2 bg-white px-2 py-1 rounded text-slate-800 font-mono font-bold text-[9px] sm:text-[10px] tracking-widest border border-slate-200 flex items-center gap-2 shadow-sm z-30">
+                  <span className="w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full border border-slate-800" style={{ backgroundColor: palette.green }}></span>
+                  Terbuka untuk
                 </div>
+                
               </div>
 
               {/* Badges Mengambang - Diubah sesuai request */}
               <div className="absolute -top-4 -left-4 sm:-left-8 z-20 bg-white p-2.5 sm:p-3 rounded-lg border-2 border-slate-900 flex items-center gap-2 sm:gap-3 shadow-md" style={{ animation: 'float-tech 4s ease-in-out infinite' }}>
-                <div className="p-1.5 sm:p-2 rounded border border-slate-900" style={{ backgroundColor: palette.yellow }}>
+                <div className="p-1.5 sm:p-2 rounded border border-slate-900" style={{ backgroundColor: palette.purple }}>
                   <FiCpu className="text-lg sm:text-xl text-slate-900" />
                 </div>
                 <div>
                   <p className="text-[8px] sm:text-[10px] text-slate-500 font-mono font-bold">KOMPETISI</p>
-                  <p className="text-slate-900 font-bold text-[10px] sm:text-xs display-font">KRTI 2016-2026</p>
+                  <p className="text-slate-900 font-bold text-[10px] sm:text-xs display-font">KRTI 2017-2026</p>
                 </div>
               </div>
 
-              <div className="absolute -bottom-14 -right-4 sm:-right-8 z-20 bg-white p-2.5 sm:p-3 rounded-lg border-2 border-slate-900 flex items-center gap-2 sm:gap-3 shadow-md" style={{ animation: 'float-tech 5s ease-in-out 1s infinite' }}>
+              <div className="absolute -bottom-12 -right-4 sm:-right-8 z-20 bg-white p-2.5 sm:p-3 rounded-lg border-2 border-slate-900 flex items-center gap-2 sm:gap-3 shadow-md" style={{ animation: 'float-tech 5s ease-in-out 1s infinite' }}>
                 <div className="text-right">
-                  <p className="text-[8px] sm:text-[10px] text-slate-500 font-mono font-bold">SEJAK</p>
-                  <p className="text-slate-900 font-bold text-[10px] sm:text-xs display-font">EST. 2016</p>
+                  <p className="text-[8px] sm:text-[10px] text-slate-500 font-mono font-bold">4 Divisi</p>
+                  <p className="text-slate-900 font-bold text-[10px] sm:text-xs display-font">RP | FW | VTOL | LELA</p>
                 </div>
-                <div className="p-1.5 sm:p-2 rounded border border-slate-900" style={{ backgroundColor: palette.purple }}>
+                <div className="p-1.5 sm:p-2 rounded border border-slate-900" style={{ backgroundColor: palette.yellow }}>
                   <FiAward className="text-lg sm:text-xl text-slate-900" />
                 </div>
               </div>
@@ -495,7 +550,7 @@ export default function SeulawahTeamProfile() {
           <div className="text-center mb-16 scroll-reveal opacity-0" data-animation="animate-slideInUp">
             <h2 className="text-2xl md:text-5xl font-bold mb-4 display-font tracking-wide text-slate-900">TENTANG KAMI</h2>
             <p className="text-slate-700 max-w-4xl mx-auto leading-relaxed text-l md:text-lg">
-              Berdiri sejak 2016 di Universitas Syiah Kuala, Tim Seulawah adalah pusat riset dan pengembangan Pesawat Tanpa Awak (UAV). Fokus kami mencakup rancang bangun sistem Racing Plane (RP), Fixed-Wing (FW), dan Long Endurance Low Altitude (LELA).
+              Berdiri sejak 2016 di Universitas Syiah Kuala, Tim Seulawah adalah pusat riset dan pengembangan Pesawat Tanpa Awak (UAV). Fokus kami mencakup rancang bangun sistem UAV untuk 4 kategori utama: Racing Plane (RP), Fixed-Wing (FW),Vertical Takeoff and Landing(VTOL), dan Long Endurance Low Altitude (LELA).
               Sebagai ajang pembuktian inovasi dan keandalan teknologi yang kami rancang, Tim Seulawah rutin berpartisipasi aktif dalam Kontes Robot Terbang Indonesia (KRTI). Melalui kolaborasi lintas disiplin ilmu, kami terus mengembangkan solusi navigasi otonom, pemetaan udara presisi, dan sistem pengawasan pintar untuk menjawab tantangan operasional di sektor sipil maupun pertahanan strategis.
             </p>
           </div>
@@ -510,7 +565,7 @@ export default function SeulawahTeamProfile() {
               {
                 icon: <FiTarget />,
                 title: 'NAVIGASI OTONOM & GCS',
-                desc: 'Pengembangan sistem autopilot dan telemetri presisi tinggi. Memastikan wahana mampu mengeksekusi misi waypoint dan lintasan terbang secara otomatis tanpa intervensi manual.',
+                desc: 'Pengembangan sistem autopilot dan telemetri. Memastikan wahana mampu mengeksekusi misi waypoint dan lintasan terbang secara otomatis tanpa intervensi manual.',
                 color: palette.purple
               },
               {
@@ -556,6 +611,31 @@ export default function SeulawahTeamProfile() {
                 <ProjectCard project={project} idx={idx} />
               </div>
             ))}
+          </div>
+          <div className="mt-20 text-center scroll-reveal opacity-0" data-animation="animate-slideInUp">
+            <h3 className="text-lg md:text-2xl font-bold mb-6 display-font tracking-wide text-slate-900">
+              GALERI AKTIVITAS TIM 
+            </h3>
+            <div className="flex flex-wrap justify-center gap-4">
+              <a
+                href="https://www.instagram.com/seulawah_team/"
+                target="_blank"
+                rel="noreferrer"
+                className="flex items-center gap-3 px-6 py-3 bg-white border-2 border-slate-900 rounded-md transition-all text-slate-900 font-mono font-bold text-sm hover:-translate-y-1 shadow-sm"
+                style={{ backgroundColor: palette.purple }}
+              >
+                <FiInstagram size={18} /> INSTAGRAM
+              </a>
+              <a
+                href="https://www.tiktok.com/@seulawah_team"
+                target="_blank"
+                rel="noreferrer"
+                className="flex items-center gap-3 px-6 py-3 bg-white border-2 border-slate-900 rounded-md transition-all text-slate-900 font-mono font-bold text-sm hover:-translate-y-1 shadow-sm"
+                style={{ backgroundColor: palette.green }}
+              >
+                <FaTiktok size={18} /> TIKTOK
+              </a>
+            </div>
           </div>
         </div>
       </section>

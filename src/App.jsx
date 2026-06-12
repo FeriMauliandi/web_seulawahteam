@@ -20,6 +20,7 @@ import lela1 from './assets/lela1.jpeg';
 import vtol from './assets/vtol.jpeg';
 import vtol1 from './assets/vtol1.jpeg';
 import logoUSK from './assets/Unsyiah.png';
+import vid from './assets/seulawah.mp4';
 
 // Definisi Palet Warna Solid & Diskrit (Berdasarkan Gambar):
 const palette = {
@@ -600,7 +601,7 @@ export default function SeulawahTeamProfile() {
             </div>
             <h2 className="text-3xl md:text-5xl font-bold mb-4 display-font tracking-wide text-slate-900">DIVISI KRTI</h2>
             <p className="text-slate-700 max-w-2xl mx-auto text-l md:text-lg leading-relaxed">
-              Kontes Robot Terbang Indonesia (KRTI) adalah panggung utama kami dalam menguji keandalan riset dan inovasi teknologi UAV. Sebagai delegasi Universitas Syiah Kuala, Tim Seulawah berfokus pada tiga divisi kompetisi, yang masing-masing menuntut spesifikasi teknis, misi otonom, dan tantangan aerodinamika yang spesifik.
+              Kontes Robot Terbang Indonesia (KRTI) adalah panggung utama kami dalam menguji keandalan riset dan inovasi teknologi UAV. Sebagai delegasi Universitas Syiah Kuala, Tim Seulawah berfokus pada empat divisi kompetisi, yang masing-masing menuntut spesifikasi teknis, misi otonom, dan tantangan aerodinamika yang spesifik.
             </p>
           </div>
 
@@ -612,6 +613,24 @@ export default function SeulawahTeamProfile() {
               </div>
             ))}
           </div>
+
+          <div className="mt-20 text-center scroll-reveal opacity-0" data-animation="animate-slideInUp">
+            <h3 className="text-lg md:text-2xl font-bold mb-6 display-font tracking-wide text-slate-900">
+              VIDEO TERBARU
+            </h3>
+            <div className="max-w-4xl mx-auto border-2 border-slate-900 rounded-lg overflow-hidden shadow-sm bg-slate-100">
+              <video
+                controls
+                className="w-full h-auto aspect-square object-cover"
+                preload="metadata"
+                playsInline
+              >
+                <source src={vid} type="video/mp4" />
+                Maaf, browser Anda tidak mendukung pemutaran video.
+              </video>
+            </div>
+          </div>
+
           <div className="mt-20 text-center scroll-reveal opacity-0" data-animation="animate-slideInUp">
             <h3 className="text-lg md:text-2xl font-bold mb-6 display-font tracking-wide text-slate-900">
               GALERI AKTIVITAS TIM 
